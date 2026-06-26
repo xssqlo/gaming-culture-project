@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Project 2 Exploring Gaming Culture</title>
+<style>
+    :root {
+      color-scheme: light;
+      --ink: #17131f;
+      --muted: #5b526a;
+      --soft: #f8f4ff;
+      --paper: #fffafd;
+      --line: #d8cdea;
+      --purple: #5C3D8F;
+      --purple-soft: #9B7FC9;
+      --reference: #777799;
+      --reference-soft: #888888;
+      --audio-bg: #f4effc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(155, 127, 201, .34), transparent 30rem),
+        linear-gradient(180deg, #4f3478 0%, #3b285c 48%, #281d3f 100%);
+      line-height: 1.62;
+      font-size: 16px;
+    }
+    .page {
+      width: min(900px, calc(100% - 32px));
+      margin: 34px auto;
+      background: var(--paper);
+      border: 1px solid rgba(216, 205, 234, .9);
+      box-shadow: 0 22px 58px rgba(18, 12, 31, 0.28);
+    }
+    main {
+      padding: 48px 64px 62px;
+    }
+    .doc-body p {
+      margin: 0 0 14px;
+    }
+    .doc-body .project-title {
+      margin-bottom: 6px;
+      color: var(--purple-soft);
+      font-size: 18px;
+      line-height: 1.22;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .doc-body .design-label,
+    .doc-body .meta-label {
+      color: var(--purple-soft);
+      font-size: 15px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .doc-body .hero-word {
+      margin-top: 8px;
+      margin-bottom: 2px;
+      color: var(--purple-soft);
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .doc-body .subtitle {
+      margin-bottom: 24px;
+      font-size: 19px;
+      line-height: 1.35;
+    }
+    .doc-body .section-label,
+    .doc-body .reference-heading {
+      margin-top: 28px;
+      margin-bottom: 8px;
+      color: var(--purple);
+      font-size: 18px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .doc-body .subheading {
+      color: #555577;
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+    .doc-body .quote-line {
+      color: var(--purple);
+      font-size: 18px;
+      font-style: italic;
+      margin: 18px 0 18px;
+    }
+    .doc-body .citation,
+    .doc-body .reference-item {
+      color: var(--reference);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+    .doc-body .reference-item {
+      margin-left: 22px;
+      text-indent: -22px;
+      margin-bottom: 10px;
+    }
+    .doc-body .reference-heading {
+      color: #6E4A86;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+    .doc-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 18px auto;
+    }
+    .doc-body table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 0;
+      margin: 14px 0 18px;
+    }
+    .doc-body td,
+    .doc-body th {
+      border: 0;
+      padding: 0;
+      vertical-align: top;
+    }
+    .audio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: -2px 0 16px;
+      padding: 0;
+    }
+    .inline-audio {
+      display: inline-flex;
+      width: 340px;
+      max-width: min(100%, 360px);
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--audio-bg);
+      vertical-align: middle;
+    }
+    .audio-index {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #efe5ff;
+      color: var(--purple);
+      font-size: 11px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+    }
+    .audio-main {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(80px, 1fr) minmax(140px, 190px);
+      gap: 8px;
+      align-items: center;
+    }
+    .audio-title {
+      display: block;
+      min-width: 0;
+      color: #4c3868;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+    audio {
+      width: 100%;
+      height: 30px;
+    }
+    @media (max-width: 680px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+      main {
+        padding: 34px 22px 48px;
+      }
+      .inline-audio {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        width: min(100%, 260px);
+        max-width: 100%;
+      }
+      .audio-main {
+        grid-template-columns: 1fr;
+      }
+    }
+</style>
+</head>
+<body>
+<article class="page">
+<main>
+<section class="doc-body"><table><tr><td><p class="project-title"><strong>PROJECT 2 EXPLORING GAMING CULTURE</strong></p><p class="design-label"><strong>TEXT BASED DESIGN</strong></p><p class="hero-word"><strong><em>UNHEARD</em></strong></p><p class="subtitle"><em>How League of Legends built a language nobody knows they're speaking</em></p><table><tr><td><p class="meta-label">GAME</p><p><strong>League of Legends</strong></p></td><td><p class="meta-label">TOPIC</p><p><strong>Sound as gameplay</strong></p></td><td><p class="meta-label">YEAR</p><p><strong>2026</strong></p></td></tr></table></td></tr></table><p><img src="assets/image-df416e8ee8d409f362.png"/></p><p class="section-label"><strong>OPENING</strong></p><p class="subheading"><strong>Before the</strong> <strong><em>Nexus falls</em></strong></p><p><img src="assets/image-5d25071a3cc5e41598.png"/></p><p>The map goes quiet. You have not looked at the minimap in thirty seconds, but you know something is wrong. Not from anything you have read or calculated. From what you have heard.</p><p>The Baron Nashor spawn sound. And there comes a low, resonant, subsonic rumble, and it comes to your chest before your brain identifies it. Then, a hostile recall sound cuts off in the middle of the chime. Someone stopped backing. And over all of this, nearly unnoticed, the score of the game has changed. The quiet early-game background music changed to something more percussive, more tense, a buildup of suspense that you would not be able to define were you to ask, but you sense as a throb in the side of your ribs.</p><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">01</span>
+<span class="audio-main">
+<span class="audio-title">The Baron Nashor spawn sound</span>
+<audio controls="" preload="metadata" src="audio/The%20Baron%20Nashor%20spawn%20sound.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">02</span>
+<span class="audio-main">
+<span class="audio-title">A hostile recall sound</span>
+<audio controls="" preload="metadata" src="audio/A%20hostile%20recall%20sound.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">03</span>
+<span class="audio-main">
+<span class="audio-title">More percussive and tense background music</span>
+<audio controls="" preload="metadata" src="audio/More%20percussive%20and%20tense%20background%20music.m4a"></audio>
+</span>
+</span>
+</div><p>You did not read any of that. You heard it. And you responded before you consciously understood why.</p><p class="quote-line"><strong><em>"This is not atmosphere. This is language."</em></strong></p><p>Over sixteen years, League of Legends has cultivated a second language into the nervous systems of its players, which does not require translation to cross the linguistic frontiers, and which has become so strong that it can now leave the game and restructure the popular culture of the world.</p><p>Most players who speak it fluently do not know they are speaking it at all.</p><table><tr><td><p class="section-label"><strong>THE ARGUMENT</strong></p><p>Sound in LoL is not decoration. It is a <strong>cognitive system</strong>, a <strong>communication language</strong>, an <strong>invisible emotional architect</strong>, and a <strong>global cultural force,</strong> all at once.</p></td></tr></table><table><tr><td><p class="section-label"><strong>COGNITION</strong></p><p><strong>The language your brain</strong></p><p><strong><em>learned without you</em></strong></p><p><img src="assets/image-b4d77864f8708a41aa.png"/></p><p class="subheading"><strong>Champion ability: sound before sight</strong></p><p>There is a sonic signature of every champion in League of Legends. Mordekaiser's ultimate, that low metallic displacement, does not merely indicate danger. It triggers a physical startle response in experienced players before identification is complete. The hook created by Blitzcrank creates a micro-dodge reflex. Fiddlestick's ultimate, that screen-darkening shriek, produces something closer to dread than any visual effect alone could achieve.</p><p>It is not by chance that it was designed so. The study carried out in 2024 using League of Legends specifically discovered that character sounds led to statistically significant effects of immersion and identification of avatars. When players had freedom to explore the full map, the effects became even more pronounced.</p><p class="citation">Haehn, L., Schlittmeier, S. J., &amp; Böffel, C. (2024). Exploring the Impact of Ambient and Character Sounds on Player Experience in Video Games. <em>Applied Sciences</em>, <em>14</em>(2), 583. https://doi.org/10.3390/app14020583</p><p>A more comprehensive literature review of 26 studies established that the most frequently researched construct in game audio studies is immersion, and that character sounds influence it by creating an action-coupling that is audible, and which develops a distinct relationship between action and result.</p><p class="citation">Nunes, C., &amp; Darin, T. (2024). Echoes of Player Experience: A Literature Review on Audio Assessment and Player Experience in Games. <em>Proceedings of the ACM on Human-Computer Interaction</em>, <em>8</em>(CHI PLAY), Article 304. https://doi.org/10.1145/3677069</p><p><strong><em>"Character sounds aid in creating a more realistic game world by acting as auditory action feedback."  — Haehn et al., 2024, p. 10</em></strong></p><table><tr><td><p><strong>↑ sig.</strong></p><p>Character sounds increase immersion when players explore freely.</p><p>Haehn et al., 2024</p></td><td><p><strong>↑ sig.</strong></p><p>Character sounds increase avatar identification and fun.</p><p>Haehn et al., 2024</p></td><td><p><strong>26</strong></p><p>Audio remains understudied vs visual design.</p><p>Nunes &amp; Darin, 2024</p></td></tr></table></td><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">04</span>
+<span class="audio-main">
+<span class="audio-title">Mordekaiser's ultimate sound</span>
+<audio controls="" preload="metadata" src="audio/Mordekaiser_s%20ultimate%20sound.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">05</span>
+<span class="audio-main">
+<span class="audio-title">Blitzcrank's hook sound</span>
+<audio controls="" preload="metadata" src="audio/Blitzcrank_s%20hook%20sound.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">06</span>
+<span class="audio-main">
+<span class="audio-title">Fiddlestick's ultimate sound</span>
+<audio controls="" preload="metadata" src="audio/Fiddlestick_s%20ultimate%20sound.m4a"></audio>
+</span>
+</span>
+</div></tr></table><p class="section-label"><strong>COMMUNICATION</strong></p><p class="subheading"><strong>Five strangers,</strong> <strong><em>one sound</em></strong></p><p><img src="assets/image-00321013556d0a90cf.png"/></p><p>In 2022, Riot expanded LoL's ping system from a handful of signals to a comprehensive non-verbal communication toolkit. Retreat. On My Way. Assist Me. Danger. A group of five players of five different nationalities, who have nothing in common but sound, can organize, warn, and win using only sound.</p><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">07</span>
+<span class="audio-main">
+<span class="audio-title">Retreat</span>
+<audio controls="" preload="metadata" src="audio/The%20enemy%20disappeared.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">08</span>
+<span class="audio-main">
+<span class="audio-title">On My Way</span>
+<audio controls="" preload="metadata" src="audio/On%20My%20Way.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">09</span>
+<span class="audio-main">
+<span class="audio-title">Assist Me</span>
+<audio controls="" preload="metadata" src="audio/Assist%20Me.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">10</span>
+<span class="audio-main">
+<span class="audio-title">Danger</span>
+<audio controls="" preload="metadata" src="audio/Danger.m4a"></audio>
+</span>
+</span>
+</div><p>In a 2025 qualitative study of 22 players in real-ranked games, something more revealing was observed: players do not act as ping information tools. They count on them as a signal of trust.</p><p class="citation">Lee, J., Kim, S., Park, Y. S., Kim, J., Jang, J., &amp; Seering, J. (2025). Less Talk, More Trust: Understanding Players' In-game Assessment of Communication Processes in League of Legends. In N. Yamashita, V. Evers, K. Yatani, X. Ding, B. Lee, M. Chetty, &amp; P. Toups-Dugas (Eds.), <em>Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems</em> (pp. 1–17). ACM. https://doi.org/10.1145/3706598.3714226</p><p>Such frequent verbal communication (typing in chat, with or without content) is perceived by the teammates as a red flag. Staying on the keyboard, playing rather than typing, was read as commitment. Action, and its aural equivalent, the ping, is a way of saying something that words cannot.</p><p><strong><em>"Players value a teammate's commitment to the game, often demonstrated through action rather than explicit communication."  — Lee et al., 2025, p. 2</em></strong></p><table><tr><td><p class="section-label"><strong>THE PARADOX OF SILENCE</strong></p><p>In most collaborative settings, more communication equals better outcomes. In League of Legends, research shows the opposite: <strong>frequent verbal communication is associated with anticipated toxicity</strong>, while silence and precise pings signal reliability. Sound designed the trust system.</p></td></tr></table><table><tr><td><p class="section-label"><strong>ADAPTIVE SCORE</strong></p><p class="subheading"><strong>The music</strong> <strong><em>nobody hears</em></strong></p><p><img src="assets/image-f387b8181526d4fcfd.png"/></p><p>League of Legends has a dynamic adaptive music system. Most players cannot describe it. <strong><em>That is the point.</em></strong></p><p>The score varies according to game state, as ambient layers at the beginning of the game give place to tension cues in the middle of the game, objective pressure cues escalating to dramatic swells, and base sieges graded with urgent percussion. There is no announcement. It operates below the level of decision and influences the emotional register of every moment without entering into consciousness.</p><p>Peng and Bai's 2025 study found that audio aesthetics in LoL significantly affected enjoyment and personal gratification, and that high-arousal music specifically influenced players' physiological arousal and their perception of challenge and mastery.</p><p class="citation">Peng, L.-H., &amp; Bai, M.-H. (2025). Examining the Mediating Effects of Game User Experience Satisfaction on Continuance Intention: A Case Study of League of Legends. <em>IEEE Access</em>, <em>13</em>, 63792–63814. https://doi.org/10.1109/ACCESS.2025.3559632</p><p>Haehn et al. also discovered that ambient sound moved towards the induction of flow states, even when the participants were not conscious of the fact that the soundscape had changed. In his argument, Kirke (2018) posits that if the soundtrack is the game and not a layer of the game, then there is no difference between audio and interaction whatsoever.</p><p class="citation">Kirke, A. (2018). When the Soundtrack Is the Game: From Audio-Games to Gaming the Music. In D. Williams &amp; N. Lee (Eds.), <em>Emotion in Video Game Soundtracking</em> (pp. 65–83). Springer International Publishing. https://doi.org/10.1007/978-3-319-72272-6_7</p><p class="quote-line"><strong><em>"The best game music is the music you forget is playing."</em></strong></p></td><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">11</span>
+<span class="audio-main">
+<span class="audio-title">Early-game ambient music</span>
+<audio controls="" preload="metadata" src="audio/Early-game%20ambient%20music.m4a"></audio>
+</span>
+</span>
+
+<span class="inline-audio">
+<span class="audio-index">12</span>
+<span class="audio-main">
+<span class="audio-title">Tension sound in the middle of the game</span>
+<audio controls="" preload="metadata" src="audio/Tension%20sound%20in%20the%20middle%20of%20the%20game.m4a"></audio>
+</span>
+</span>
+</div></tr></table><p class="section-label"><strong>CULTURAL REACH</strong></p><p class="subheading"><strong>Worlds is bigger</strong> <strong><em>than the game</em></strong></p><p><img src="assets/image-a1a759d58c6c2efbdf.png"/></p><p>POP/STARS was a release of K/DA in 2018. It has garnered more than 65 million views on YouTube. It charted. Played in clubs. Individuals who had never played League of Legends before were familiar with all the words.</p><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">13</span>
+<span class="audio-main">
+<span class="audio-title">A short clip of POPSTARS</span>
+<audio controls="" preload="metadata" src="audio/A%20short%20clip%20of%20POPSTARS.m4a"></audio>
+</span>
+</span>
+</div><p>POP/STARS was followed by True Damage, Pentakill's III: Lost Chapter, Seraphine's solo career arc, Imagine Dragons' Enemy soundtracking the Arcane Netflix series, and Lil Nas X performing Star Walkin' as the 2022 Worlds anthem in front of a global live audience. These were not marketing campaigns dressed as music. They were music that created their own audiences - audiences that did not have to have any association with the game.</p><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">14</span>
+<span class="audio-main">
+<span class="audio-title">A short clip of Enemy</span>
+<audio controls="" preload="metadata" src="audio/A%20short%20clip%20of%20Enemy.m4a"></audio>
+</span>
+</span>
+</div><p>Škripcová, L. N. (2022). Convergence in Digital Games: A Case Study of League of Legends. <em>Acta Ludologica</em>, <em>5</em>(2), 86-103.</p><p>Škripcová's 2022 case study documents how K/DA, Pentakill, and True Damage function as independent artists on streaming platforms, discoverable without any knowledge of their origins in a MOBA game. The sonic identity Riot created within LoL turned into the raw material of a music ecosystem that reached the audience who did not play a match in the game.</p><p><strong><em>Game audio has crossed a threshold. It is no longer about games. It is simply culture.</em></strong></p><table><tr><td><p class="section-label"><strong>POSITION</strong></p><p class="subheading"><strong><em>Listen</em></strong> <strong>or die.</strong></p><p><img src="assets/image-18d46cf001133527d9.jpg"/></p><p>The literature review presented by Nunes and Darin demonstrates that a burning gap exists in research on audio: although it has proven to have a significant effect on immersion, identification with an avatar, flow, and emotional involvement, it is still underdeveloped in comparison with visual design. The field has been looking at screens when it should have been listening.</p><p>This reflects a greater cultural blindness. Writing and reading are taught in schools. They teach visual literacy to some degree. They fail to impart sonic literacy, the skill of learning to think through sound, to feel through sound, to communicate through sound, and to think culturally through sound.</p><p>And yet League of Legends has been educating millions of players daily, without calling it education, without calling it language, without calling it anything at all.</p><p class="quote-line"><strong><em>"What games teach us about sound, schools have never taught at all."</em></strong></p><p>I had been playing League of Legends for a long time before I could have explained any of this. I had heard what the noises were warning. I understood when an urgency was in a ping. I was familiar with the affective form of a Baron battle with its score in advance of recognising that I was listening to music. I was taught a language that I had not realized I was learning.</p><p>It is what makes the audio design of LoL one of the most remarkable ones, not its technical refinement, which is also quite high, but its invisibility. The lingo that fades out of use is the best.</p><p><strong>CASUAL VS CORE PLAYERS</strong></p><p><em>Audio aesthetics have a more pronounced effect on enjoyment for casual players; sound is the entry point for new players. (Peng &amp; Bai, 2025)</em></p><p><strong>THE AUDIO-GAME LIMIT CASE</strong></p><p><em>When an entire game is built on sound as its only mechanic, players achieve high usability and immersion, proving sound can carry the full interactive burden alone. (Rovithis et al., 2019)</em></p><p>League of Legends built a language, hid it inside a game, and taught it to over 100 million people who mostly have no idea they are speaking it.</p><p><strong><em>Listen more carefully. It was always there.</em></strong></p></td><div class="audio-row">
+<span class="inline-audio">
+<span class="audio-index">15</span>
+<span class="audio-main">
+<span class="audio-title">Pentakill</span>
+<audio controls="" preload="metadata" src="audio/Pentakill.m4a"></audio>
+</span>
+</span>
+</div></tr></table><table><tr><td><p class="reference-heading"><strong>REFERENCES</strong></p><p class="reference-item">Haehn, L., Schlittmeier, S. J., &amp; Böffel, C. (2024). Exploring the Impact of Ambient and Character Sounds on Player Experience in Video Games. <em>Applied Sciences</em>, <em>14</em>(2), 583. https://doi.org/10.3390/app14020583</p><p class="reference-item">Kirke, A. (2018). When the Soundtrack Is the Game: From Audio-Games to Gaming the Music. In D. Williams &amp; N. Lee (Eds.), <em>Emotion in Video Game Soundtracking</em> (pp. 65–83). Springer International Publishing. https://doi.org/10.1007/978-3-319-72272-6_7</p><p class="reference-item">Lee, J., Kim, S., Park, Y. S., Kim, J., Jang, J., &amp; Seering, J. (2025). Less Talk, More Trust: Understanding Players' In-game Assessment of Communication Processes in League of Legends. In N. Yamashita, V. Evers, K. Yatani, X. Ding, B. Lee, M. Chetty, &amp; P. Toups-Dugas (Eds.), <em>Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems</em> (pp. 1–17). ACM. https://doi.org/10.1145/3706598.3714226</p><p class="reference-item">Nunes, C., &amp; Darin, T. (2024). Echoes of Player Experience: A Literature Review on Audio Assessment and Player Experience in Games. <em>Proceedings of the ACM on Human-Computer Interaction</em>, <em>8</em>(CHI PLAY), Article 304. https://doi.org/10.1145/3677069</p><p class="reference-item">Peng, L.-H., &amp; Bai, M.-H. (2025). Examining the Mediating Effects of Game User Experience Satisfaction on Continuance Intention: A Case Study of League of Legends. <em>IEEE Access</em>, <em>13</em>, 63792–63814. https://doi.org/10.1109/ACCESS.2025.3559632</p><p class="reference-item">Rovithis, E., Moustakas, N., Floros, A., &amp; Vogklis, K. (2019). Audio Legends: Investigating Sonic Interaction in an Augmented Reality Audio Game. <em>Multimodal Technologies and Interaction</em>, <em>3</em>(4), 73. https://doi.org/10.3390/mti3040073</p><p class="reference-item">Škripcová, L. N. (2022). Convergence in Digital Games: A Case Study of League of Legends. <em>Acta Ludologica</em>, <em>5</em>(2), 86-103.</p></td></tr></table></section>
+</main>
+</article>
+</body>
+</html>
